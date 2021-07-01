@@ -67,3 +67,17 @@ type procInfo struct {
 	PID string
 	CMD string
 }
+
+func getCPUPercent(data *types.StatsJSON) float64 {
+	cpuPercent := 0.0
+	numCPUs := len(data.CPUStats.CPUUsage.PercpuUsage)
+
+	cpuDelta := float64(data.CPUStats.CPUUsage.TotalUsage) - float64(data.PreCPUStats.CPUUsage.TotalUsage)
+
+	systemDelta := float64(data.CPUStats.SystemUsage) - float64(data.PreCPUStats.SystemUsage)
+
+	if cpuDelta > 0.0 && systemDelta > 0.0 {
+		cpuPercent = (cpuDelta / systemDelta) * float64(numCPUs) * 100.0
+	}
+	return cpuPercent
+}
