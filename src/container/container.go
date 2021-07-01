@@ -13,3 +13,21 @@ import (
 	ui "github.com/gizak/termui/v3"
 	"github.com/pesos/grofer/src/general"
 )
+
+type PerContainerMetrics struct {
+	ID     string
+	Image  string
+	Name   string
+	Status string
+	State  string
+	Cpu    float64
+	Mem    float64
+	Net    netStat
+	Blk    blkStat
+	Pid     string
+	NetInfo []netInfo
+	PerCPU  []string
+	PortMap []portMap
+	Mounts  []mountInfo
+	Procs   []procInfo
+}
