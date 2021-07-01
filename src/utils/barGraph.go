@@ -33,3 +33,53 @@ func NewBarChart() *BarChart {
 		BarWidth:     3,
 	}
 }
+
+func (b *BarChart) Draw(buf *ui.Buffer) {
+	b.Block.Draw(buf)
+
+	maxVal := b.MaxVal
+	if maxVal == 0 {
+		maxVal, _ = ui.GetMaxFloat64FromSlice(b.Data)
+		if maxVal == 0 {
+			maxVal = 1
+		}
+	}
+
+	barXCoordinate := b.Inner.Min.X
+
+	for i, data := range b.Data {
+		height := int((data / maxVal) * float64(b.Inner.Dy()-1))
+		for x := barXCoordinate; x < ui.MinInt(barXCoordinate+b.BarWidth, b.Inner.Max.X); x++ {
+			for y := b.Inner.Max.Y - 2; y > (b.Inner.Max.Y-2)-height; y-- {
+				c := ui.NewCell(' ', ui.NewStyle(ui.ColorClear, ui.SelectColor(b.BarColors, i)))
+				buf.SetCell(c, image.Pt(x, y))
+			}
+		}
+
+		if i < len(b.Labels) {
+			labelXCoordinate := barXCoordinate +
+				int((float64(b.BarWidth) / 2)) -
+				int((float64(rw.StringWidth(b.Labels[i])) / 2))
+			buf.SetString(
+				b.Labels[i],
+				ui.SelectStyle(b.LabelStyles, i),
+				image.Pt(labelXCoordinate, b.Inner.Max.Y-1),
+			)
+		}
+
+		numberXCoordinate := barXCoordinate + int((float64(b.BarWidth) / 2))
+		if numberXCoordinate <= b.Inner.Max.X {
+			buf.SetString(
+				b.NumFormatter(data),
+				ui.NewStyle(
+					ui.SelectStyle(b.NumStyles, i+1).Fg,
+					ui.SelectColor(b.BarColors, i),
+					ui.SelectStyle(b.NumStyles, i+1).Modifier,
+				),
+				image.Pt(numberXCoordinate, b.Inner.Max.Y-2),
+			)
+		}
+
+		barXCoordinate += (b.BarWidth + b.BarGap)
+	}
+}
