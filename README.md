@@ -38,3 +38,10 @@ Flags:
 Use "gotop [command] --help" for more information about a command.
 
 ```
+
+# flags
+```sh
+./gotop --cpuinfo
+./gotop --help
+./gotop --refersh 10000 # note this set's the ui refresh rate in milliseconds. this number your going to give must be greater than 1000
+```
