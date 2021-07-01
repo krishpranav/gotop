@@ -36,3 +36,33 @@ func TestGetPerCPUPercents(t *testing.T) {
 		utils.Equals(t, testVal, test.expectedOutput)
 	}
 }
+
+func TestGetCPUPercent(t *testing.T) {
+	tests := []struct {
+		inputStats     types.StatsJSON
+		expectedOutput float64
+	}{
+		{
+			inputStats: types.StatsJSON{
+				Stats: types.Stats{
+					CPUStats: types.CPUStats{
+						CPUUsage: types.CPUUsage{
+							PercpuUsage: []uint64{0},
+						},
+					},
+					PreCPUStats: types.CPUStats{
+						CPUUsage: types.CPUUsage{
+							PercpuUsage: []uint64{0, 0},
+						},
+					},
+				},
+			},
+			expectedOutput: 0,
+		},
+	}
+
+	for _, test := range tests {
+		testVal := getCPUPercent(&test.inputStats)
+		utils.Equals(t, testVal, test.expectedOutput)
+	}
+}
