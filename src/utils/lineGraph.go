@@ -20,3 +20,15 @@ type LineGraph struct {
 	LineColors       map[string]ui.Color
 	DefaultLineColor ui.Color
 }
+
+func NewLineGraph() *LineGraph {
+	return &LineGraph{
+		Block: ui.NewBlock(),
+
+		Data:   make(map[string][]float64),
+		Labels: make(map[string]string),
+
+		HorizontalScale: 5,
+		LineColors:      make(map[string]ui.Color),
+	}
+}
