@@ -94,3 +94,50 @@ func TestRoundValues(t *testing.T) {
 		utils.Equals(t, test.expectedUnit, testUnit)
 	}
 }
+
+func TestGetInMB(t *testing.T) {
+	tests := []struct {
+		inputVal    uint64
+		precision   int
+		expectedVal float64
+	}{
+		{1234567, 1, 1.2},
+		{123456789, 2, 123.46},
+		{123456789, 6, 123.456789},
+		{0, 2, 0},
+	}
+
+	for _, test := range tests {
+		testVal := utils.GetInMB(test.inputVal, test.precision)
+		utils.Equals(t, testVal, test.expectedVal)
+	}
+}
+
+func TestGetDateFromUnix(t *testing.T) {
+	t1 := time.Unix(10000000, 0)
+	date1 := t1.Format(time.RFC822)
+
+	t2 := time.Unix(0, 0)
+	date2 := t2.Format(time.RFC822)
+
+	t3 := time.Unix(1596652055, 0)
+	date3 := t3.Format(time.RFC822)
+
+	t4 := time.Unix(9999999999, 0)
+	date4 := t4.Format(time.RFC822)
+
+	tests := []struct {
+		expectedVal string
+		inputVal    int64
+	}{
+		{date1, 10000000000},
+		{date2, 0},
+		{date3, 1596652055000},
+		{date4, 9999999999000},
+	}
+
+	for _, test := range tests {
+		testVal := utils.GetDateFromUnix(test.inputVal)
+		utils.Equals(t, testVal, test.expectedVal)
+	}
+}
