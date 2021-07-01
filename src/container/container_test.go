@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"github.com/docker/docker/api/types"
-	"github.com/pesos/grofer/src/utils"
+	"github.com/krishpranav/gotop/src/utils"
 )
 
 func TestGetPerCPUPercents(t *testing.T) {

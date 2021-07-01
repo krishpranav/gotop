@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/pesos/grofer/src/utils"
+	"github.com/krishpranav/gotop/src/utils"
 )
 
 func TestRoundValues(t *testing.T) {

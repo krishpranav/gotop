@@ -3,7 +3,7 @@ package utils_test
 import (
 	"testing"
 
-	"github.com/pesos/grofer/src/utils"
+	"github.com/krishpranav/gotop/src/utils"
 )
 
 func TestSortData(t *testing.T) {
