@@ -21,3 +21,15 @@ type BarChart struct {
 	BarGap   int
 	MaxVal   float64
 }
+
+func NewBarChart() *BarChart {
+	return &BarChart{
+		Block:        *ui.NewBlock(),
+		BarColors:    ui.Theme.BarChart.Bars,
+		NumStyles:    ui.Theme.BarChart.Nums,
+		LabelStyles:  ui.Theme.BarChart.Labels,
+		NumFormatter: func(n float64) string { return fmt.Sprint(n) },
+		BarGap:       1,
+		BarWidth:     3,
+	}
+}
