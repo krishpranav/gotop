@@ -34,3 +34,17 @@ type Table struct {
 	ColColor     map[int]ui.Color
 	ColResizer   func()
 }
+
+func NewTable() *Table {
+	return &Table{
+		Block:       ui.NewBlock(),
+		HeaderStyle: ui.NewStyle(ui.ColorClear, ui.ColorClear, ui.ModifierBold),
+		RowStyle:    ui.NewStyle(ui.Theme.Default.Fg),
+		SelectedRow: 0,
+		TopRow:      0,
+		UniqueCol:   0,
+		ColResizer:  func() {},
+		ColColor:    make(map[int]ui.Color),
+		CursorColor: ui.ColorCyan,
+	}
+}
