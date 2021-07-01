@@ -16,3 +16,27 @@ import (
 	"github.com/pesos/grofer/src/container"
 	"github.com/pesos/grofer/src/utils"
 )
+
+var runProc = true
+var helpVisible = false
+var errorVisible = false
+
+var sortIdx = -1
+var sortAsc = false
+
+const (
+	UP_ARROW   = "▲"
+	DOWN_ARROW = "▼"
+)
+
+var header = []string{
+	"ID",
+	"Image",
+	"Name",
+	"Status",
+	"State",
+	"CPU",
+	"Memory",
+	"Net I/O",
+	"Block I/O",
+}
