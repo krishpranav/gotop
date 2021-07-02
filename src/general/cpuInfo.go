@@ -75,3 +75,26 @@ func (c *CPULoad) readCPULoad() error {
 
 	return err
 }
+
+func (c *CPULoad) UpdateCPULoad() error {
+	err := c.readCPULoad()
+	if err != nil {
+		return err
+	}
+	cpuRates, err := GetCPURates()
+	if err != nil {
+		return err
+	}
+
+	rate := []string{}
+	cpus := []string{}
+	for i, cpuRate := range cpuRates {
+		cpus = append(cpus, "CPU "+strconv.Itoa(i))
+		rate = append(rate, fmt.Sprintf("%.2f%%", cpuRate))
+	}
+	rates := [][]string{cpus, rate}
+
+	c.CPURates = rates
+
+	return nil
+}
