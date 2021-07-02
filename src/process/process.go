@@ -24,3 +24,27 @@ type Process struct {
 	Foreground     bool
 	Background     bool
 }
+
+func InitAllProcs() (map[int32]*Process, error) {
+	var processes map[int32]*Process = make(map[int32]*Process)
+	pids, err := proc.Processes()
+
+	if err != nil {
+		return processes, err
+	}
+
+	for _, proc := range pids {
+		tempProc := &Process{Proc: proc}
+		processes[proc.Pid] = tempProc
+	}
+	return processes, nil
+}
+
+func NewProcess(pid int32) (*Process, error) {
+	process, err := proc.NewProcess(pid)
+	if err != nil {
+		return nil, err
+	}
+	newProcess := &Process{Proc: process}
+	return newProcess, nil
+}
