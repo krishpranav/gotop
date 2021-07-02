@@ -8,8 +8,8 @@ import (
 	"strings"
 	"time"
 
-	procInfo "github.com/pesos/grofer/src/process"
-	"github.com/pesos/grofer/src/utils"
+	procInfo "github.com/krishpranav/gotop/src/process"
+	"github.com/krishpranav/gotop/src/utils"
 )
 
 type contextSwitches struct {

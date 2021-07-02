@@ -3,10 +3,10 @@ package process
 import (
 	ui "github.com/gizak/termui/v3"
 	"github.com/gizak/termui/v3/widgets"
-	"github.com/pesos/grofer/src/utils"
+	"github.com/krishpranav/gotop/src/utils"
 )
 
-// PerProcPage holds the ui elements rendered by the command grofer proc -p PID
+// PerProcPage holds the ui elements rendered by the command gotop proc -p PID
 type PerProcPage struct {
 	Grid             *ui.Grid
 	CPUChart         *widgets.Gauge
@@ -34,7 +34,7 @@ func NewPerProcPage() *PerProcPage {
 	return page
 }
 
-// InitPerProc initializes and sets the ui and grid for grofer proc -p PID
+// InitPerProc initializes and sets the ui and grid for gotop proc -p PID
 func (page *PerProcPage) InitPerProc() {
 	// Initialize Gauge for CPU Chart
 	page.CPUChart.Title = " CPU % "
@@ -128,7 +128,7 @@ func (page *PerProcPage) InitPerProc() {
 	page.Grid.SetRect(0, 0, w, h)
 }
 
-// AllProcPage struct holds the ui elements rendered by the grofer proc command
+// AllProcPage struct holds the ui elements rendered by the gotop proc command
 type AllProcPage struct {
 	Grid      *ui.Grid
 	ProcTable *utils.Table
@@ -144,7 +144,7 @@ func NewAllProcsPage() *AllProcPage {
 	return page
 }
 
-// InitAllProc initializes and sets the ui and grid for grofer proc
+// InitAllProc initializes and sets the ui and grid for gotop proc
 func (page *AllProcPage) InitAllProc() {
 	page.ProcTable.Header = []string{
 		"PID",

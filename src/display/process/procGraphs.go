@@ -8,10 +8,10 @@ import (
 	"time"
 
 	ui "github.com/gizak/termui/v3"
-	h "github.com/pesos/grofer/src/display/misc"
-	info "github.com/pesos/grofer/src/general"
-	"github.com/pesos/grofer/src/process"
-	"github.com/pesos/grofer/src/utils"
+	h "github.com/krishpranav/gotop/src/display/misc"
+	info "github.com/krishpranav/gotop/src/general"
+	"github.com/krishpranav/gotop/src/process"
+	"github.com/krishpranav/gotop/src/utils"
 )
 
 var runProc = true

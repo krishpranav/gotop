@@ -11,19 +11,19 @@ import (
 	"github.com/docker/docker/api/types/filters"
 	"github.com/docker/docker/client"
 	ui "github.com/gizak/termui/v3"
-	"github.com/pesos/grofer/src/general"
+	"github.com/krishpranav/gotop/src/general"
 )
 
 type PerContainerMetrics struct {
-	ID     string
-	Image  string
-	Name   string
-	Status string
-	State  string
-	Cpu    float64
-	Mem    float64
-	Net    netStat
-	Blk    blkStat
+	ID      string
+	Image   string
+	Name    string
+	Status  string
+	State   string
+	Cpu     float64
+	Mem     float64
+	Net     netStat
+	Blk     blkStat
 	Pid     string
 	NetInfo []netInfo
 	PerCPU  []string

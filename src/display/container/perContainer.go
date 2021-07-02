@@ -9,11 +9,11 @@ import (
 	"time"
 
 	ui "github.com/gizak/termui/v3"
-	h "github.com/pesos/grofer/src/display/misc"
-	info "github.com/pesos/grofer/src/general"
+	h "github.com/krishpranav/gotop/src/display/misc"
+	info "github.com/krishpranav/gotop/src/general"
 
-	"github.com/pesos/grofer/src/container"
-	"github.com/pesos/grofer/src/utils"
+	"github.com/krishpranav/gotop/src/container"
+	"github.com/krishpranav/gotop/src/utils"
 )
 
 // ContainerVisuals provides the UI for per container metrics

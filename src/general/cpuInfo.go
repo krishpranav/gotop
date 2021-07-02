@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/pesos/grofer/src/utils"
+	"github.com/krishpranav/gotop/src/utils"
 )
 
 // CPULoad type contains info about load on CPU from various sources

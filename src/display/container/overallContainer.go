@@ -10,11 +10,11 @@ import (
 	"github.com/docker/docker/api/types"
 	"github.com/docker/docker/client"
 	ui "github.com/gizak/termui/v3"
-	"github.com/pesos/grofer/src/display/misc"
-	info "github.com/pesos/grofer/src/general"
+	"github.com/krishpranav/gotop/src/display/misc"
+	info "github.com/krishpranav/gotop/src/general"
 
-	"github.com/pesos/grofer/src/container"
-	"github.com/pesos/grofer/src/utils"
+	"github.com/krishpranav/gotop/src/container"
+	"github.com/krishpranav/gotop/src/utils"
 )
 
 var runProc = true

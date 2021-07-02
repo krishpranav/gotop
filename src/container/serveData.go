@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/docker/docker/client"
-	"github.com/pesos/grofer/src/utils"
+	"github.com/krishpranav/gotop/src/utils"
 )
 
 func Serve(ctx context.Context, cli *client.Client, all bool, dataChannel chan ContainerMetrics, refreshRate int64) error {

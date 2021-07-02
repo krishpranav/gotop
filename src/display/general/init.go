@@ -5,10 +5,10 @@ import (
 
 	ui "github.com/gizak/termui/v3"
 	"github.com/gizak/termui/v3/widgets"
-	"github.com/pesos/grofer/src/utils"
+	"github.com/krishpranav/gotop/src/utils"
 )
 
-// MainPage contains the ui widgets for the ui rendered by the grofer command
+// MainPage contains the ui widgets for the ui rendered by the gotop command
 type MainPage struct {
 	Grid         *ui.Grid
 	MemoryChart  *widgets.BarChart
@@ -64,7 +64,7 @@ func NewCPUPage(numCores int) *CPUPage {
 	return page
 }
 
-// InitGeneral initializes all ui elements for the ui rendered by the grofer command
+// InitGeneral initializes all ui elements for the ui rendered by the gotop command
 func (page *MainPage) InitGeneral(numCores int) {
 
 	// Initialize Bar Graph for Memory Chart

@@ -7,8 +7,8 @@ import (
 	"strings"
 	"time"
 
-	cpuInfo "github.com/pesos/grofer/src/general"
-	"github.com/pesos/grofer/src/utils"
+	cpuInfo "github.com/krishpranav/gotop/src/general"
+	"github.com/krishpranav/gotop/src/utils"
 	"github.com/shirou/gopsutil/cpu"
 	"github.com/shirou/gopsutil/disk"
 	"github.com/shirou/gopsutil/mem"

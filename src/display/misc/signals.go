@@ -2,7 +2,7 @@ package misc
 
 import (
 	ui "github.com/gizak/termui/v3"
-	"github.com/pesos/grofer/src/utils"
+	"github.com/krishpranav/gotop/src/utils"
 	"syscall"
 )
 

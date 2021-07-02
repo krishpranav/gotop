@@ -4,7 +4,7 @@ import (
 	"context"
 	"sync"
 
-	"github.com/pesos/grofer/src/utils"
+	"github.com/krishpranav/gotop/src/utils"
 )
 
 type serveFunc func(context.Context, chan utils.DataStats) error
