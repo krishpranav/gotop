@@ -38,13 +38,16 @@ func (c *CPULoad) readCPULoad() error {
 	}
 	defer file.Close()
 	reader := bufio.NewReader(file)
+
 	data, err := reader.ReadBytes(byte('\n'))
 	if err != nil {
 		return err
 	}
-	vals := strings.Field(string(data))[1:]
+
+	vals := strings.Fields(string(data))[1:]
 	var avg [10]float64
 	sum := 0
+
 	for i, x := range vals {
 		curr, err := strconv.Atoi(x)
 		if err != nil {
@@ -59,4 +62,16 @@ func (c *CPULoad) readCPULoad() error {
 		avg[i] = 100 * x / float64(sum)
 	}
 
+	c.Usr = int(avg[0])
+	c.Nice = int(avg[1])
+	c.Sys = int(avg[2])
+	c.Idle = int(avg[3])
+	c.Iowait = int(avg[4])
+	c.Irq = int(avg[5])
+	c.Soft = int(avg[6])
+	c.Steal = int(avg[7])
+	c.Guest = int(avg[8])
+	c.Gnice = int(avg[9])
+
+	return err
 }
