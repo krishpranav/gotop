@@ -26,3 +26,7 @@ type CPULoad struct {
 	Idle     int        `json:"idle"`
 	Irq      int        `json:"irq"`
 }
+
+func NewCPULoad() *CPULoad {
+	return &CPULoad{}
+}
