@@ -30,3 +30,16 @@ type CPULoad struct {
 func NewCPULoad() *CPULoad {
 	return &CPULoad{}
 }
+
+func (c *CPULoad) readCPULoad() error {
+	file, err := os.Open("/proc/stat")
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+	reader := bufio.NewReader(file)
+	data, err := reader.ReadBytes(byte('\n'))
+	if err != nil {
+		return err
+	}
+}
