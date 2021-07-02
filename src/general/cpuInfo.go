@@ -42,4 +42,21 @@ func (c *CPULoad) readCPULoad() error {
 	if err != nil {
 		return err
 	}
+	vals := strings.Field(string(data))[1:]
+	var avg [10]float64
+	sum := 0
+	for i, x := range vals {
+		curr, err := strconv.Atoi(x)
+		if err != nil {
+			return err
+		} else {
+			avg[i] = float64(curr)
+			sum += curr
+		}
+	}
+
+	for i, x := range avg {
+		avg[i] = 100 * x / float64(sum)
+	}
+
 }
