@@ -98,3 +98,19 @@ func (c *CPULoad) UpdateCPULoad() error {
 
 	return nil
 }
+
+func GetCPULoad(ctx context.Context, cpuLoad *CPULoad, dataChannel chan *CPULoad, refreshRate uint64) error {
+	return utils.TickUntilDone(ctx, int64(refreshRate), func() error {
+		err := cpuLoad.UpdateCPULoad()
+		if err != nil {
+			return err
+		}
+
+		select {
+		case <-ctx.Done():
+			return ctx.Err()
+		case dataChannel <- cpuLoad:
+			return nil
+		}
+	})
+}
