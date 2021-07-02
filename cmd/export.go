@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"strings"
 
-	exportGeneral "github.com/pesos/grofer/src/export/general"
-	exportProc "github.com/pesos/grofer/src/export/proc"
+	exportGeneral "github.com/krishpranav/gotop/src/export/general"
+	exportProc "github.com/krishpranav/gotop/src/export/proc"
 
 	"github.com/spf13/cobra"
 )
@@ -13,7 +13,7 @@ import (
 const (
 	defaultExportRefreshRate = 1000
 	defaultExportIterations  = 10
-	defaultExportFileName    = "grofer_profile"
+	defaultExportFileName    = "gotop_profile"
 	defaultExportType        = "json"
 	defaultExportPid         = -1
 )
@@ -96,7 +96,7 @@ var exportCmd = &cobra.Command{
 				return exportGeneral.ExportJSON(filename, iter, refreshRate)
 
 			default:
-				return fmt.Errorf("invalid export type, see grofer export --help")
+				return fmt.Errorf("invalid export type, see gotop export --help")
 			}
 		} else {
 			switch exportType {
@@ -104,7 +104,7 @@ var exportCmd = &cobra.Command{
 				return exportProc.ExportPidJSON(exportPid, filename, iter, refreshRate)
 
 			default:
-				return fmt.Errorf("invalid export type, see grofer export --help")
+				return fmt.Errorf("invalid export type, see gotop export --help")
 			}
 		}
 	},
